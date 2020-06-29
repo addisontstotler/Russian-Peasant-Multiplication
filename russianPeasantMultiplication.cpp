@@ -1,5 +1,4 @@
 //Addison Stotler
-//CSCI: 342
 //Russian Peasant Multiplication
 
 #include <iostream>
@@ -15,27 +14,39 @@ int russionPeasant(int n, int m)
     //Loop ends when n = 0
     while(n)
     {
-	//n is odd
+	//If n is odd
 	if(n & 1)
 	{
+	    // If n is negative subtract m from the sum
 	    if(n & neg)
+	    {
 		sum = sum - m;
+	    }
+	    //If n is positive add m to the sum
 	    else
+	    {
 		sum = sum + m;
+	    }
 	}
-	
+
+	//If n is negative
 	if(n & neg)
 	{
 	    //Make n positive, so bitshifting n still works properly
+	    //Note: This is sepecific for C++
 	    n = -n;
+
+	    //Halves n
 	    n = n >> 1;
 
 	    //Make n negative again
 	    n = -n;
 	}
 	else
+	{
 	 n = n >> 1;
-
+	}
+	
 	//Doubles m
 	m = m << 1;
     }
@@ -44,9 +55,13 @@ int russionPeasant(int n, int m)
 
 int main()
 {
-    int n,m; 
+    //Two numbers being multiplied
+    int n,m;
+
+    cout << "Enter the two integers being multiplied:" << endl;
     cin >> n >> m;
 
+    //Multiplies the two integers
     cout << russionPeasant(n,m) << endl;
     
     return 0;
